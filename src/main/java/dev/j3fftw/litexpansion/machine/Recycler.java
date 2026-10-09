@@ -129,7 +129,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.SCRAP.clone());
+                inv.replaceExistingItem(OUTPUT_SLOT, ((ItemStack) Items.SCRAP).clone());
             }
             progress.remove(pos);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);

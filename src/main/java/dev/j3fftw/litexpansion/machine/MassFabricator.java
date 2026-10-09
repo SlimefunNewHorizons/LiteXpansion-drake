@@ -142,7 +142,7 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.clone());
+                inv.replaceExistingItem(OUTPUT_SLOT, ((ItemStack) Items.UU_MATTER).clone());
             }
             progress.remove(pos);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);

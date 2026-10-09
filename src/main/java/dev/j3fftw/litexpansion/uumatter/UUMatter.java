@@ -109,7 +109,10 @@ public final class UUMatter {
             System.arraycopy(line.toCharArray(), 0, chars, 0, 3);
             for (char c : chars) {
                 if (c == 'x') {
-                    recipe[i++] = Items.UU_MATTER.clone();
+                    // Keep the call bound to Bukkit's stable ItemStack#clone ABI.
+                    // The universal Slimefun core intentionally does not promise the
+                    // covariant SlimefunItemStack#clone descriptor used by older cores.
+                    recipe[i++] = ((ItemStack) Items.UU_MATTER).clone();
                 } else {
                     recipe[i++] = null;
                 }
@@ -118,7 +121,7 @@ public final class UUMatter {
     }
 
     public void addUuMatterRecipe(@Nonnull SlimefunItemStack item, int amount, @Nonnull ItemStack[] recipe) {
-        final ItemStack clone = item.clone();
+        final ItemStack clone = ((ItemStack) item).clone();
         clone.setAmount(amount);
         this.addUuMatterRecipe(clone, recipe);
     }
