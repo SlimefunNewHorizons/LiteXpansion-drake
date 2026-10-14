@@ -63,11 +63,6 @@
             <scope>provided</scope>
         </dependency>
 
-            <dependency>
-                <groupId>com.github.drakescraft_labs</groupId>
-                <artifactId>drakes-labs-autoupdate</artifactId>
-                <version>11-SNAPSHOT</version>
-            </dependency>
 
 
             <!-- ProtocolLib -->
@@ -299,10 +294,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.drakescraft_labs</groupId>
-            <artifactId>drakes-labs-autoupdate</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>io.papermc.paper</groupId>

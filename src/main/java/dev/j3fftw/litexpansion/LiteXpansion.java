@@ -1,7 +1,6 @@
 package dev.j3fftw.litexpansion;
 
 
-import com.github.drakescraft_labs.labupdate.DrakesLabsReleaseUpdate;
 import dev.j3fftw.litexpansion.resources.ThoriumResource;
 import dev.j3fftw.litexpansion.service.MetricsService;
 import dev.j3fftw.litexpansion.ticker.PassiveElectricRemovalTicker;
@@ -31,7 +30,6 @@ public class LiteXpansion extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        DrakesLabsReleaseUpdate.schedule(this, "LiteXpansion-drake");
 
         setInstance(this);
 
