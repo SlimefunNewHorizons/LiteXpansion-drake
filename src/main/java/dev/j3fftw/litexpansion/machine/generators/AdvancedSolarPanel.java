@@ -145,8 +145,6 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
         return new int[0];
     }
 
-    @Getter
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public enum Type {
 
         ADVANCED(Items.ADVANCED_SOLAR_PANEL, ADVANCED_DAY_RATE, ADVANCED_NIGHT_RATE, ADVANCED_OUTPUT,
@@ -179,5 +177,40 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
 
         @Nonnull
         private final ItemStack[] recipe;
+
+        Type(@Nonnull SlimefunItemStack item, int dayGenerationRate, int nightGenerationRate, int output, int storage, @Nonnull ItemStack[] recipe) {
+            this.item = item;
+            this.dayGenerationRate = dayGenerationRate;
+            this.nightGenerationRate = nightGenerationRate;
+            this.output = output;
+            this.storage = storage;
+            this.recipe = recipe;
+        }
+
+        @Nonnull
+        public SlimefunItemStack getItem() {
+            return this.item;
+        }
+
+        public int getDayGenerationRate() {
+            return this.dayGenerationRate;
+        }
+
+        public int getNightGenerationRate() {
+            return this.nightGenerationRate;
+        }
+
+        public int getOutput() {
+            return this.output;
+        }
+
+        public int getStorage() {
+            return this.storage;
+        }
+
+        @Nonnull
+        public ItemStack[] getRecipe() {
+            return this.recipe;
+        }
     }
 }

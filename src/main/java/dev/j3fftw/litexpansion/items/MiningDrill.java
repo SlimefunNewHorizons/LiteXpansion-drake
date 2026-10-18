@@ -38,8 +38,6 @@ public class MiningDrill extends SimpleSlimefunItem<ItemUseHandler> implements L
         return 1000;
     }
 
-    @Getter
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public enum Type {
 
         MINING(Items.MINING_DRILL, new ItemStack[] {
@@ -56,5 +54,19 @@ public class MiningDrill extends SimpleSlimefunItem<ItemUseHandler> implements L
         @Nonnull
         private final SlimefunItemStack item;
         private final ItemStack[] recipe;
+
+        Type(@Nonnull SlimefunItemStack item, ItemStack[] recipe) {
+            this.item = item;
+            this.recipe = recipe;
+        }
+
+        @Nonnull
+        public SlimefunItemStack getItem() {
+            return this.item;
+        }
+
+        public ItemStack[] getRecipe() {
+            return this.recipe;
+        }
     }
 }

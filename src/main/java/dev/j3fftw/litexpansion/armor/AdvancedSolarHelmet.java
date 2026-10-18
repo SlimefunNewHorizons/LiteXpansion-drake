@@ -31,8 +31,6 @@ public class AdvancedSolarHelmet extends SolarHelmet {
         Items.ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 6);
     }
 
-    @Getter
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public enum Type {
 
         ADVANCED(Items.ADVANCED_SOLAR_HELMET, 5, new ItemStack[] {
@@ -62,11 +60,10 @@ public class AdvancedSolarHelmet extends SolarHelmet {
             Items.THORIUM_PLATE, null, Items.THORIUM_PLATE
         }),
         ULTIMATE(Items.ULTIMATE_SOLAR_HELMET, 250, new ItemStack[] {
-            null, Items.ULTIMATE_SOLAR_PANEL, null,
+            null, Items.HYBRID_SOLAR_PANEL, null,
             Items.IRIDIUM_PLATE, Items.HYBRID_SOLAR_HELMET, Items.IRIDIUM_PLATE,
             Items.IRIDIUM_PLATE, null, Items.IRIDIUM_PLATE
         });
-
 
         @Nonnull
         private final SlimefunItemStack item;
@@ -74,6 +71,26 @@ public class AdvancedSolarHelmet extends SolarHelmet {
 
         @Nonnull
         private final ItemStack[] recipe;
+
+        Type(@Nonnull SlimefunItemStack item, int generationRate, @Nonnull ItemStack[] recipe) {
+            this.item = item;
+            this.generationRate = generationRate;
+            this.recipe = recipe;
+        }
+
+        @Nonnull
+        public SlimefunItemStack getItem() {
+            return this.item;
+        }
+
+        public int getGenerationRate() {
+            return this.generationRate;
+        }
+
+        @Nonnull
+        public ItemStack[] getRecipe() {
+            return this.recipe;
+        }
     }
 }
 
