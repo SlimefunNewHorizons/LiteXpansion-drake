@@ -22,6 +22,17 @@ public final class PassiveElectricRemovalTicker implements Runnable {
 
     @Override
     public void run() {
+        if (!Bukkit.isPrimaryThread()) {
+            LiteXpansion plugin = LiteXpansion.getInstance();
+            if (plugin != null && plugin.isEnabled()) {
+                Bukkit.getScheduler().runTask(plugin, this::tickOnlinePlayers);
+            }
+            return;
+        }
+        tickOnlinePlayers();
+    }
+
+    private void tickOnlinePlayers() {
         final Set<TickerDataHolder> set = new HashSet<>();
 
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -30,7 +41,7 @@ public final class PassiveElectricRemovalTicker implements Runnable {
 
             for (int i = 0; i < contents.length; i++) {
                 final ItemStack is = contents[i];
-                if (is != null && is.hasItemMeta()) {
+                if (is != null && !is.getType().isAir() && is.hasItemMeta()) {
                     final SlimefunItem item = SlimefunItem.getByItem(is);
 
                     if (item instanceof PassiveElectricRemoval per) {
@@ -40,11 +51,9 @@ public final class PassiveElectricRemovalTicker implements Runnable {
             }
         }
 
-        Bukkit.getScheduler().runTask(LiteXpansion.getInstance(), () -> {
-            for (TickerDataHolder holder : set) {
-                PassiveElectricRemoval.tick(holder.item, holder.per);
-            }
-        });
+        for (TickerDataHolder holder : set) {
+            PassiveElectricRemoval.tick(holder.item, holder.per);
+        }
     }
 
     private static class TickerDataHolder {
