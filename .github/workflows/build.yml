@@ -26,5 +26,5 @@ jobs:
         with:
           project: LiteXpansion
           apiToken: ${{ secrets.BLOB_BUILDS_API_TOKEN }}
-          file: ./target/LiteXpansion.jar
+          file: ./target/LiteXpansion-drake.jar
           releaseNotes: ${{ github.event.head_commit.message }}
