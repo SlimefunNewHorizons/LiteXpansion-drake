@@ -2,24 +2,29 @@ name: Java CI
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 16
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
         with:
-          java-version: 16
+          distribution: temurin
+          java-version: '21'
 
       - name: Build with Maven
-        run: mvn package
+        run: mvn -B -ntp clean verify
 
       - name: Upload to Blob Builds
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: WalshyDev/blob-builds/gh-action@main
         with:
           project: LiteXpansion
           apiToken: ${{ secrets.BLOB_BUILDS_API_TOKEN }}
-          file: ./target/LiteXpansion.jar
+          file: ./target/LiteXpansion-drake.jar
           releaseNotes: ${{ github.event.head_commit.message }}
