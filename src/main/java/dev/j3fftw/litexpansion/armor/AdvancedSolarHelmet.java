@@ -5,9 +5,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.electric.gadgets.SolarHelmet;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
@@ -60,7 +57,7 @@ public class AdvancedSolarHelmet extends SolarHelmet {
             Items.THORIUM_PLATE, null, Items.THORIUM_PLATE
         }),
         ULTIMATE(Items.ULTIMATE_SOLAR_HELMET, 250, new ItemStack[] {
-            null, Items.HYBRID_SOLAR_PANEL, null,
+            null, Items.ULTIMATE_SOLAR_PANEL, null,
             Items.IRIDIUM_PLATE, Items.HYBRID_SOLAR_HELMET, Items.IRIDIUM_PLATE,
             Items.IRIDIUM_PLATE, null, Items.IRIDIUM_PLATE
         });
