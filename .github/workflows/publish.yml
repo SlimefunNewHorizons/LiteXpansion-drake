@@ -1,0 +1,16 @@
+name: Publish
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', 'pom.xml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    uses: SlimefunNewHorizons/.github/.github/workflows/publish-blob.yml@main
+    with:
+      project: LiteXpansion-Drake
+      file: target/LiteXpansion-drake.jar
+      java-version: '21'
+    secrets: inherit
